@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+
+<div  class="col-lg-12 col-md-12 col-sm-12">
+
+    <br>
+
+    <h1 style="text-align: center;font-family:Verdana,serif">
+        <strong>Delete a record</strong>
+    </h1>
+
+    <br>
+    <br>
+
+    <form action="/deleteRecordRedirect?id={{ deleteRecord.getID() }}">
+        <div style="text-align: center">
+
+            <br>
+            <br>
+
+            <label for="sure" class="form-label" style="font-size: 200%">
+                Confirm: Are you sure you want to delete the following record?
+            </label>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <table id="record" class="table table-responsive" style="border-width:3px;width:100%">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Price</th>
+                        <th>Transaction date</th>
+                        <th>Transaction type</th>
+                        <th>Quantity</th>
+                        <th>Account number</th>
+                        <th>Date created</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>{{ deleteRecord.getTicker() }}</td>
+                        <td>{{ deleteRecord.getPrice() }}</td>
+                        <td>{{ deleteRecord.getTransDate() }}</td>
+                        <td>{{ deleteRecord.getTransType() }}</td>
+                        <td>{{ deleteRecord.getQuantity() }}</td>
+                        <td>{{ deleteRecord.getAccountNumber() }}</td>
+                        <td>{{ deleteRecord.getCreateDate() }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <input type="hidden" value="{{ deleteRecord.getID() }}" name="idinput">
+
+            <button class="btn btn-outline-danger btn-lg" type="submit">Continue</button>
+            <a href="/" class="btn btn-outline-info btn-lg" type="button">Go back</a>
+
+            <div class="form-text-lg" style="margin-top:1%">
+                <strong>This action cannot be undone</strong>
+            </div>
+        </div>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</div>
+
+{% endblock %}
+</body>
+</html>

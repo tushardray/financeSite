@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+    <div class="container-fluid" id="pageTop">
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom:1%;text-align: center;">
+                <h1>Financial transactions from 2015 to 2022</h1>
+            </div>
+
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <h2>Records shown currently: {{ datalist|length }}</h2>
+                <h2>Total number of records: {{ totalVals[0] }}</h2>
+                <h5>Scroll to the <a href="#bottomForm">bottom</a> to see more records</h5>
+                <h5>Create a new record <a href="/table/createRecord">here</a></h5>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top:1%">
+                <table class="table table-responsive"
+                       style="border-width: 3px;border-color: navy;border-style: solid">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Price</th>
+                            <th>Transaction Date</th>
+                            <th>Transaction Type</th>
+                            <th>Quantity</th>
+                            <th>Account Number</th>
+                            <th>Record creation date/time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for record in datalist %}
+                        <tr>
+                            <td>
+                                <div class="dropdown show">
+                                    <button class="btn dropdown-toggle" type="button"
+                                            id="editOrDeleteDropdown" data-toggle="dropdown" style="color:black">
+                                        {{ record.getTicker() }}
+                                    </button>
+
+                                    <div class="dropdown-menu">
+                                        <a href="/table/editRecord?id={{ record.getID() }}" class="dropdown-item">Edit transaction</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ record.getPrice() }}</td>
+                            <td>{{ record.getTransDate() }}</td>
+                            <td>{{ record.getTransType() }}</td>
+                            <td>{{ record.getQuantity() }}</td>
+                            <td>{{ record.getAccountNumber() }}</td>
+                            <td>{{ record.getCreateDate() }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <br>
+                <br>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid" id="bottomForm">
+
+        <div class="row">
+
+            <div class="col-lg-5">
+                <h1 style="margin-left:10%">Show more records</h1>
+
+                <br>
+                <br>
+
+                <form action="/expandedTable" method="POST">
+
+                    <div class="form-check" style="margin-left:15%;font-size:150%">
+                        <label for="showAllVals" class="form-check-label">Show all</label>
+                        <input class="form-check-input" id="showAllVals" name="showVals" value="showAll" type="radio">
+                    </div>
+
+                    <br>
+
+                    <div class="form-check" style="margin-left:15%;font-size:150%">
+                        <label for="showHalfVals" class="form-check-label">Show half</label>
+                        <input class="form-check-input" id="showHalfVals" name="showVals" value="showHalf" type="radio">
+                    </div>
+
+                    <br>
+
+                    <button class="btn btn-outline-success btn-lg" type="submit" style="margin-left:15%">
+                        Go! &rarr;
+                    </button>
+                </form>
+
+                <br>
+                <br>
+
+                <h2 style="margin-left: 10%">OR</h2>
+
+                <br>
+                <br>
+
+                <form action="/expandedTable" method="POST">
+
+                    <div class="input-group" style="margin-left:15%;font-size:150%">
+                        <span class="input-group-text">Custom:</span>
+                        <input class="form-control" type="text" id="showCustomVals" name="showVals">
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <button class="btn btn-outline-success btn-lg" type="submit" style="margin-left:15%">
+                        Go! &rarr;
+                    </button>
+
+                </form>
+            </div>
+
+            <div>
+
+                <br>
+                <br>
+
+                <h5 style="text-align: center">Click <a href="#pageTop">here</a> to return to the top</h5>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
+</body>
+</html>

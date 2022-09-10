@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+<form action="/createRecordRedirect", method="POST">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12" style="text-align: center">
+                <h1 style="font-family: Verdana, serif">Transaction entry</h1>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="col-lg-6">
+
+                <div class="input-group">
+                    <input class="form-control" type="text" name="ticker" value="Submit all other information to generate an ID" readonly disabled>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Ticker</span>
+                    <input class="form-control" type="text" name="ticker" placeholder="Stock symbol" required>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Price</span>
+                    <input class="form-control" type="text" name="price" pattern="$+\d{4}+(\.\d{2})?" placeholder="$0000.00 up to $9999.99" required>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Transaction date</span>
+                    <input class="form-control" type="date" name="date" placeholder="yyyy-mm-dd" min="2015-01-01" required>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="input-group">
+                    <span class="input-group-text">Transaction type</span>
+                    <input class="form-control" type="text" name="type" placeholder='"buy" or "sell"' required>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Quantity</span>
+                    <input class="form-control" type="text" name="quantity" placeholder="No more than 4 digits" required>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Account number</span>
+                    <input class="form-control" type="text" name="number" placeholder="#########-#" required>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="input-group">
+                    <span class="input-group-text">Date/time of creation</span>
+                    <input class="form-control" type="datetime-local" name="datetime" placeholder="MMMM-YY-DDT00:00 (use 24 hr time)" required>
+                </div>
+
+                <br>
+                <br>
+            </div>
+
+            <div style="text-align: center">
+                <button class="btn btn-outline-success" type="submit">Submit</button>
+                <a href="/" class="btn btn-outline-secondary">Return to home</a>
+            </div>
+
+        </div>
+    </div>
+</form>
+{% endblock %}
+</body>
+</html>

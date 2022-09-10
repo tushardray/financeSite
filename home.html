@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}>></title>
+</head>
+<body>
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-6 jumbotron rounded" style="margin-top: 3%;margin-left: 3%; font-size:150%">
+                <h1>Financial transactions</h1>
+                <p class="lead">My personal stock and monetary affairs from 2015 - 2022</p>
+            </div>
+
+            <div class="col-lg-6" style="margin-left:5%;margin-top: 2%;text-align: center">
+                <h1>Top 10 holdings</h1>
+
+                <div class="jumbotron" style="overflow:auto;float: right;height: 90%;width: 100%;margin-top:2%">
+                    <table class="table table-responsive tableScroll"
+                    style="border-width: 3px">
+                        <thead>
+                            <tr>
+                                <th>Ticker</th>
+                                <th>Price</th>
+                                <th>Transaction Date</th>
+                                <th>Transaction Type</th>
+                                <th>Quantity</th>
+                                <th>Account Number</th>
+                                <th>Record creation date/time</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for record in dataList %}
+                            <tr>
+                                <td>{{ record.getTicker() }}</td>
+                                <td>{{ record.getPrice() }}</td>
+                                <td>{{ record.getTransDate() }}</td>
+                                <td>{{ record.getTransType() }}</td>
+                                <td>{{ record.getQuantity() }}</td>
+                                <td>{{ record.getAccountNumber() }}</td>
+                                <td>{{ record.getCreateDate() }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

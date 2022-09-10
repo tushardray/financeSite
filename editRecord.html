@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+<br>
+
+<div class="container">
+    <div class="row" style="text-align: center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1>Edit a record</h1>
+        </div>
+    </div>
+</div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+<form action="/table/editRecordRedirect?id={{ editRecord.getID() }}" method="POST">
+<div class="container">
+    <div class="row">
+
+        <div class="col" style="text-align: center">
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">ID Number (Read only)</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="viewID" name="viewID" value="{{ editRecord.getID() }}" readonly disabled>
+            </div>
+
+            <input type="hidden" name="hiddenID" value="{{ editRecord.getID() }}">
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change ticker</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editTicker" name="editTicker" value="{{ editRecord.getTicker() }}">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the price</span>
+                <input class="form-control form-control-lg" type="text" placeholder="ONLY use the format $0000.00"
+                    id="editPrice" name="editPrice" value="{{ editRecord.getPrice() }}">
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the transaction date</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editTransDate" name="editTransDate" value="{{ editRecord.getTransDate() }}">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+        <div class="col" style="text-align: center">
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the transaction type</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editTransType" name="editTransType" value="{{ editRecord.getTransType() }}">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the quantity</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editQuantity" name="editQuantity" value="{{ editRecord.getQuantity() }}">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the account number</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editAccountNum" name="editAccountNum" value="{{ editRecord.getAccountNumber() }}">
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Change the date/time of creation</span>
+                <input class="form-control form-control-lg" type="text"
+                    id="editCreateDateTime" name="editCreateDateTime" value="{{ editRecord.getCreateDate() }}">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="text-align: center">
+        <button class="btn btn-outline-success btn-lg" type="submit" name="editOrDelete" value="edit">Make changes</button>
+        <button class="btn btn-outline-danger btn-lg" type="submit" name="editOrDelete" value="delete">Delete transaction</button>
+        <a href="/" class="btn btn-outline-secondary btn-lg">Return to home</a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</div>
+</form>
+
+{% endblock %}
+</body>
+</html>
