@@ -35,41 +35,6 @@ def home():
 
     positions = []
 
-    # for record in cursorPositions:
-    #     idVal = int(record[0])
-    #     # print(idVal)
-    #
-    #     quantityINT = int(record[1])
-    #     # print(quantityINT)
-    #
-    #     originalPriceFLO = record[2]
-    #     # print(originalPriceFLO)
-    #     priceFLO = float(record[2][1:])
-    #     # print(priceFLO)
-    #
-    #     multipliedVal = quantityINT * priceFLO
-    #     # print(multipliedVal)
-    #
-    #     singlePos = [idVal, multipliedVal]
-    #
-    #     positions.append(singlePos)
-    #
-    # print(positions)
-    #
-    # for i in positions:
-    #     topValString = """
-    #         INSERT INTO top_vals (id, multiplied)
-    #         VALUES ('{id}', '{multiplied}')
-    #         """.format(id=positions[i][0], multiplied=positions[i][1])
-    #
-    #     cursorTopVals.execute(topValString)
-    #
-    # cursorPositions.close()
-    # cursorTopVals.close()
-    #
-    # connector.commit()
-    # connector.close()
-
     return render_template("home.html", title="Home", dataList=transactionsList)
 
 
